@@ -9,6 +9,8 @@ import {
     minLengthTelefono,
     maxLengthTelefono,
 } from '../../shared/constants/datos.constants';
+import Swal from 'sweetalert2';
+import { CANCELAR_REGISTRO } from '../../shared/constants';
 
 @Component({
     selector: 'app-register',
@@ -51,23 +53,23 @@ export class RegisterComponent {
         });
     }
 
-    public onlyNumber(event: any): boolean {
+    public onlyNumber(event: KeyboardEvent): boolean {
         return this.helperTransformValue.onlyNumber(event);
     }
 
-    public onlyLetter(event: any): boolean {
+    public onlyLetter(event: KeyboardEvent): boolean {
         return this.helperTransformValue.onlyLetter(event);
     }
 
     public cancelar(): void {
-        this._router.navigate(['/']);
+        Swal.fire(CANCELAR_REGISTRO).then(result => {
+            if (result.isConfirmed) this._router.navigate(['/']);
+        });
     }
 
     public registrar(): void {
         const params: IParamsRegistro = {
             ...this.loginForm.value,
         };
-
-        console.log(params);
     }
 }
