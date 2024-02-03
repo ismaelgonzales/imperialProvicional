@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class TransformValueService {
     constructor() {}
 
-    public onlyNumber(event: any): boolean {
-        const charCode = event.which ?? event.keyCode;
+    public onlyNumber(event: KeyboardEvent): boolean {
+        const charCode = event.key.charCodeAt(0);
 
         if (charCode >= 48 && charCode <= 57) {
             return true;
@@ -15,8 +15,8 @@ export class TransformValueService {
         return false;
     }
 
-    public onlyLetter(event: any): boolean {
-        const charCode = event.which ?? event.keyCode;
+    public onlyLetter(event: KeyboardEvent): boolean {
+        const charCode = event.key.charCodeAt(0);
 
         if (
             (charCode >= 65 && charCode <= 90) ||
