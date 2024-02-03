@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 import { IParamsRegistro } from './interfaces/registro.interface';
 import {
     minLengthContrasena,
-    minMaxLengthTelefono,
+    minLengthTelefono,
+    maxLengthTelefono,
 } from '../../shared/constants/datos.constants';
 
 @Component({
@@ -35,8 +36,8 @@ export class RegisterComponent {
                 '',
                 [
                     Validators.required,
-                    Validators.minLength(minMaxLengthTelefono),
-                    Validators.maxLength(minMaxLengthTelefono),
+                    Validators.minLength(minLengthTelefono),
+                    Validators.maxLength(maxLengthTelefono),
                 ],
             ],
             correo: ['', [Validators.required, Validators.email]],
