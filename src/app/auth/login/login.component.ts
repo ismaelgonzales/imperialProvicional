@@ -15,7 +15,7 @@ export class LoginComponent {
 
     private initialForm(): void {
         this.loginForm = this.fb.group({
-            email: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
             contrasena: ['', Validators.required],
         });
     }
