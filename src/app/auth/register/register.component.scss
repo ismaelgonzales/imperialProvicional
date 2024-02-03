@@ -10,3 +10,12 @@
     color : #ff4646;
     font-weight: 600;
 }
+
+.wrapper__principal{
+    background-image: url('../../../assets/img/background-register.webp');
+    min-height: 100vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+}
