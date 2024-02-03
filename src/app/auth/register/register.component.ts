@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TransformValueService } from '../../shared/helpers/transform-value.service';
 import * as constansShared from '../../shared/constants';
 import { Router } from '@angular/router';
-import { IParamsRegistro } from './interfaces/registro.interface';
+import { IParamsRegistro } from './interfaces';
 import {
     minLengthContrasena,
     minLengthTelefono,
