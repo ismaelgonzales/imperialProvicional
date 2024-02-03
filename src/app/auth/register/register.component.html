@@ -2,34 +2,45 @@
     <div class="card login">
         <div class="card-body">
             <h1 class="title text-center">Registrate</h1>
-            <form class="row">
+            <form class="row" [formGroup]="loginForm">
                 <mat-form-field>
                     <mat-label>Nombres</mat-label>
-                    <input matInput type="name" />
+                    <input matInput type="name" formControlName="nombre" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Apellido Paterno</mat-label>
-                    <input matInput type="text" />
+                    <input matInput type="text" formControlName="apePaterno" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Apellido Materno</mat-label>
-                    <input matInput type="text" />
+                    <input matInput type="text" formControlName="apeMaterno" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Telefono</mat-label>
-                    <input matInput type="phone" />
+                    <input
+                        matInput
+                        type="phone"
+                        [maxLength]="9"
+                        formControlName="telefono" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Correo electronico</mat-label>
-                    <input matInput type="email" />
+                    <input matInput type="email" formControlName="correo" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Contasena</mat-label>
-                    <input matInput type="password" />
+                    <input
+                        matInput
+                        type="password"
+                        formControlName="contrasena" />
+                    <mat-hint class="hint"
+                        >*La contasena minimo debe tener 5 caracteres</mat-hint
+                    >
                 </mat-form-field>
             </form>
-            <div class="d-sm-flex justify-content-center">
+            <div class="mt-4 d-sm-flex justify-content-center">
                 <button
+                    [disabled]="!loginForm.valid"
                     mat-raised-button
                     color="primary"
                     class="w-100 mb-2 btn">
