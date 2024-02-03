@@ -23,6 +23,7 @@ import {
 } from '@angular/material/form-field';
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         DashboardComponent,
         ContentComponent,
         RegisterComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,
