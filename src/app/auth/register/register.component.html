@@ -5,19 +5,32 @@
             <form class="row" [formGroup]="loginForm">
                 <mat-form-field>
                     <mat-label>Nombres</mat-label>
-                    <input matInput type="name" formControlName="nombre" />
+                    <input
+                        (keypress)="onlyLetter($event)"
+                        matInput
+                        type="name"
+                        formControlName="nombre" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Apellido Paterno</mat-label>
-                    <input matInput type="text" formControlName="apePaterno" />
+                    <input
+                        (keypress)="onlyLetter($event)"
+                        matInput
+                        type="text"
+                        formControlName="apePaterno" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Apellido Materno</mat-label>
-                    <input matInput type="text" formControlName="apeMaterno" />
+                    <input
+                        (keypress)="onlyLetter($event)"
+                        matInput
+                        type="text"
+                        formControlName="apeMaterno" />
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Telefono</mat-label>
                     <input
+                        (keypress)="onlyNumber($event)"
                         matInput
                         type="phone"
                         [maxLength]="9"
@@ -26,6 +39,7 @@
                 <mat-form-field>
                     <mat-label>Correo electronico</mat-label>
                     <input matInput type="email" formControlName="correo" />
+                    <mat-error>{{ constantsShared.MSG_ERROR_EMAIL }}</mat-error>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Contasena</mat-label>
@@ -33,20 +47,27 @@
                         matInput
                         type="password"
                         formControlName="contrasena" />
-                    <mat-hint class="hint"
-                        >*La contasena minimo debe tener 5 caracteres</mat-hint
+                    <mat-error
+                        >*La contrasena minimo debe ser de
+                        {{ constantsShared.minLengthContrasena }}
+                        caracteres</mat-error
                     >
                 </mat-form-field>
             </form>
             <div class="mt-4 d-sm-flex justify-content-center">
                 <button
                     [disabled]="!loginForm.valid"
+                    (click)="registrar()"
                     mat-raised-button
                     color="primary"
                     class="w-100 mb-2 btn">
                     Registrar
                 </button>
-                <button mat-raised-button color="warn" class="w-100">
+                <button
+                    mat-raised-button
+                    color="warn"
+                    class="w-100"
+                    (click)="cancelar()">
                     Cancelar
                 </button>
             </div>
