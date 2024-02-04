@@ -1,5 +1,5 @@
-<div class="header">
-    <div class="d-flex justify-content-evenly header__init">
+<div class="header" id="inicio">
+    <div class="d-flex justify-content-evenly header__init header-no-fixed">
         <div class="direccion d-flex align-items-baseline m-2">
             <mat-icon svgIcon="pin_icon" />
             <span>{{ constantShared.direccion }}</span>
@@ -10,12 +10,14 @@
         </div>
         <div class="telefono d-flex align-items-baseline m-2">
             <mat-icon svgIcon="mobile_icon"></mat-icon>
-            <a [href]="'tel:' + constantShared.telefono">{{
+            <a class="tel" [href]="'tel:' + constantShared.telefono">{{
                 constantShared.telefono
             }}</a>
         </div>
     </div>
-    <div class="d-flex justify-content-evenly">
+    <div
+        class="header-fixed d-flex justify-content-evenly"
+        [class.fixed]="shouldApplyFixedHeader">
         <div class="logo">
             <img
                 class="logo"
@@ -24,9 +26,9 @@
         </div>
         <div class="opciones">
             <ul class="d-flex m-4 opciones__lista">
-                <li>Inicio</li>
-                <li>Servicios</li>
-                <li>Contactate</li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contactame">Contactame</a></li>
                 <li class="intranet" (click)="onRouteLogin()">Intranet</li>
             </ul>
         </div>
