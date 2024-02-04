@@ -23,6 +23,14 @@ mat-divider{
         border : 1px solid $borderPrimaro;
         border-top: 5px solid $colorPrimario;
         border-bottom: 5px solid $colorPrimario;
+
+        div{
+            animation : slidein 0.5s forwards
+        }
+
+        img{
+            animation: zoomout 0.5s forwards;
+        }
     }
 
     &__name {
@@ -33,4 +41,23 @@ mat-divider{
         color : #676767
     }
     
+}
+
+@keyframes slidein {
+    from {
+        transform: translateY(0px);
+    }
+  
+    to {
+        transform: translateY(10px);
+    }
+}
+
+@keyframes zoomout {
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform : scale(1.1)
+    }
 }

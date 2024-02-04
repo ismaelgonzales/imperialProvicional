@@ -19,7 +19,7 @@ export class OurTeamComponent {
         },
         {
             id: 2,
-            name: 'Diego Sandobal',
+            name: 'Martha Sandobal',
             position: 'Analista de datos',
             prefixPhone: true,
             prefixPhoneNumber: '+02 (23)',
