@@ -1,0 +1,36 @@
+@import "../../../shared/styles/generics.scss";
+
+img{
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+mat-divider{
+    margin : 10px 0px
+}
+
+.member{
+    max-width: 50%;
+    min-height: 600px;
+    padding : 20px;
+ 
+    
+    &:hover{
+        border : 1px solid $borderPrimaro;
+        border-top: 5px solid $colorPrimario;
+        border-bottom: 5px solid $colorPrimario;
+    }
+
+    &__name {
+        font-weight: 900;
+    }
+
+    &__position{
+        color : #676767
+    }
+    
+}

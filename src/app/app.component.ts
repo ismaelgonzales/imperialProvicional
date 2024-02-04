@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconService } from './shared/services/icon.service';
 
 @Component({
     selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
+    constructor(private readonly _iconService: IconService) {
+        this._iconService.registerIcons();
+    }
+
     title = 'frontContaMyPe';
 }

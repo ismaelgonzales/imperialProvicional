@@ -1,0 +1,47 @@
+@import "../../../shared/styles/generics.scss";
+
+.container{
+    &__element{
+        border : 2px solid $borderPrimaro;
+        padding : 100px;
+
+        &:hover{  
+            background-color: #f7f7f7;
+
+            .container__title{
+                animation : slidein 0.5s forwards
+            }
+
+            .container__text{
+                animation : slidein 0.5s forwards
+            }   
+        }
+        
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 1.3rem;      
+    }
+
+    &__text{
+        font-size: .9rem;
+    }
+}
+
+mat-icon{
+    transform: scale(2);
+}
+
+
+@keyframes slidein {
+    from {
+        transform: translateY(0px);
+    }
+  
+    to {
+        transform: translateY(10px);
+    }
+}
+
+

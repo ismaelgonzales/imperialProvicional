@@ -1,0 +1,18 @@
+<div class="d-flex">
+    @for (service of dataServices; track service.id) {
+        <div class="col-4 container__element">
+            <div class="text-center">
+                <div
+                    class="d-flex align-items-center justify-content-center mb-4">
+                    <mat-icon [svgIcon]="service.icon" />
+                </div>
+                <div class="container__title">
+                    {{ service.title }}
+                </div>
+                <p class="container__text mt-2">
+                    {{ service.text }}
+                </p>
+            </div>
+        </div>
+    }
+</div>

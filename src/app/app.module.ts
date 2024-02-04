@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,17 @@ import {
 import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
+import { SingleComponent } from './shared/components/layout/single/single.component';
+import { HeaderComponent } from './single-page/components/header/header.component';
+import { FooterComponent } from './single-page/components/footer/footer.component';
+import { IconService } from './shared/services/icon.service';
+import { HttpClientModule } from '@angular/common/http';
+import { SliderComponent } from './single-page/components/slider/slider.component';
+import { register } from 'swiper/element/bundle';
+import { ServicesConComponent } from './single-page/components/services-con/services-con.component';
+import { OurTeamComponent } from './single-page/components/our-team/our-team.component';
+
+register();
 
 @NgModule({
     declarations: [
@@ -33,6 +44,12 @@ import { LoginComponent } from './auth/login/login.component';
         ContentComponent,
         RegisterComponent,
         LoginComponent,
+        SingleComponent,
+        HeaderComponent,
+        FooterComponent,
+        SliderComponent,
+        ServicesConComponent,
+        OurTeamComponent,
     ],
     imports: [
         BrowserModule,
@@ -50,6 +67,8 @@ import { LoginComponent } from './auth/login/login.component';
         MatInputModule,
         ReactiveFormsModule,
         FormsModule,
+        MatIconModule,
+        HttpClientModule,
     ],
     providers: [
         provideAnimationsAsync(),
@@ -57,7 +76,9 @@ import { LoginComponent } from './auth/login/login.component';
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
             useValue: { appearance: 'outline' },
         },
+        IconService,
     ],
     bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

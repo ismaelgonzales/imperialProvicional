@@ -1,0 +1,21 @@
+<swiper-container
+    slides-per-view="3"
+    class="container"
+    navigation="true"
+    loop="true">
+    @for (member of dataTeam; track member.id) {
+        <swiper-slide
+            class="member text-center d-flex flex-column align-items-center justify-content-center">
+            <img [src]="member.img" [alt]="member.name" />
+            <div class="member__name">{{ member.name }}</div>
+            <div class="member__position">{{ member.position }}</div>
+            <mat-divider />
+            <div>
+                @if (member.prefixPhone) {
+                    {{ member.prefixPhoneNumber }}
+                }
+                {{ member.phoneNumber }}
+            </div>
+        </swiper-slide>
+    }
+</swiper-container>
