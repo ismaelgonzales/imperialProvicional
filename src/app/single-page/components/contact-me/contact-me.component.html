@@ -1,0 +1,36 @@
+<div class="container p-5">
+    <div class="container__contact p-4">
+        <h1 class="text-center">Contactame</h1>
+        <form [formGroup]="contactMeForm">
+            <div class="d-flex justify-content-center">
+                <input
+                    class="col-6 p-3 mb-3 m-1"
+                    matInput
+                    type="text"
+                    placeholder="Nombres y Apellidos"
+                    formControlName="nombre" />
+
+                <input
+                    class="col-6 p-3 mb-3 m-1"
+                    matInput
+                    type="email"
+                    placeholder="Correo electronico"
+                    formControlName="email" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <textarea
+                    class="col-12 mb-3 p-3"
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="4"
+                    cdkAutosizeMaxRows="4"
+                    matInput
+                    type="text-area"
+                    placeholder="Mensaje"
+                    formControlName="mensaje"></textarea>
+            </div>
+        </form>
+        <button>Enviar</button>
+        <google-map></google-map>
+    </div>
+</div>

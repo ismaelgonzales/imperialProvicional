@@ -33,6 +33,10 @@ import { SliderComponent } from './single-page/components/slider/slider.componen
 import { register } from 'swiper/element/bundle';
 import { ServicesConComponent } from './single-page/components/services-con/services-con.component';
 import { OurTeamComponent } from './single-page/components/our-team/our-team.component';
+import { SuccessCaseComponent } from './single-page/components/success-case/success-case.component';
+import { ContactMeComponent } from './single-page/components/contact-me/contact-me.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { FindmeComponent } from './single-page/components/findme/findme.component';
 
 register();
 
@@ -50,6 +54,9 @@ register();
         SliderComponent,
         ServicesConComponent,
         OurTeamComponent,
+        SuccessCaseComponent,
+        ContactMeComponent,
+        FindmeComponent,
     ],
     imports: [
         BrowserModule,

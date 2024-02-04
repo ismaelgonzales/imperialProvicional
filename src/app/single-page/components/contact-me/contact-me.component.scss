@@ -1,0 +1,26 @@
+@import "../../../shared/styles/generics.scss";
+
+h1{
+    color : $colorBlanco;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+button{
+    border : 2px solid $colorBlanco;
+    background-color: transparent;
+    padding: 10px 90px;
+    color : $colorBlanco;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.container{
+    &__contact{
+        background-color : $colorHoverPrimario
+    }
+}
+
+  
+  

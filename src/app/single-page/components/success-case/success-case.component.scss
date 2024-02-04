@@ -1,0 +1,71 @@
+@import "../../../shared/styles/generics.scss";
+
+.content{
+    background-color: $backgroundSecundario;
+    min-height:  400px;
+
+    &__info{
+        padding : 10%;
+
+        &__data{
+            color : #fff;
+            font-size: 25px;
+            
+            &__porcentaje{
+                color : #ffbb3d;
+                font-weight: 900;
+                font-size : 40px
+            }
+
+            &__porcentaje2{
+                color : $colorPrimario;
+                font-weight: 900;
+                font-size : 40px
+            }
+        }
+        
+      
+    }
+
+    &__title{
+        font-weight: 100;
+    }
+}
+
+.container{
+    background-color: $colorBlanco;
+}
+
+.title-bold{
+    font-weight: bold;
+}
+
+img{
+    object-fit: cover;
+}
+
+h1{
+    color : $colorBlanco;
+    font-size: 3rem;
+}
+
+p{  margin-top : 10px;
+    font-size: 15px;
+    font-weight: 300;
+    color: $colorHoverBlanco
+}
+
+.parafrasis{
+    color : #fff
+}
+
+.parafrasis-signal{
+    font-size: 90px;
+}
+
+mat-divider{
+    border-top-color: #fff;
+}
+
+
+

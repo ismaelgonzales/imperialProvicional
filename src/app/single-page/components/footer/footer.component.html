@@ -1,1 +1,49 @@
-<p>footer works!</p>
+<div class="content">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-evenly bg-bl">
+            <div class="col-3 p-4">
+                <img src="../../../../assets/img/singlePage/logo.png" alt="" />
+                <p class="mt-4">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Saepe soluta iste alias quisquam autem beatae. Rem, odit
+                    dolor. Temporibus neque cum quasi accusamus vitae, soluta
+                    quia perferendis dolore debitis perspiciatis.
+                </p>
+            </div>
+            <div class="col-3">
+                <div class="content__title">Link Externos</div>
+                <ul>
+                    <li>Contacto SUNAT</li>
+                    <li>Sentinel</li>
+                    <li>Consulta legal</li>
+                    <li>Contacto SUNASS</li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <div class="content__title">Accesos directos</div>
+                <ul>
+                    <li>Inicio</li>
+                    <li>Servicios</li>
+                    <li>Contactate</li>
+                    <li>Intranet</li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <div class="content__title">Contactanos</div>
+                <div class="mt-2 d-flex align-items-baseline">
+                    <mat-icon svgIcon="pin_icon" class="m-2"></mat-icon>
+                    <p class="m-2">{{ sharedConstants.direccion }}</p>
+                </div>
+                <div class="mt-2 d-flex align-items-baseline">
+                    <mat-icon svgIcon="mobile_icon" class="m-2"></mat-icon>
+                    <p class="m-2">{{ sharedConstants.telefono }}</p>
+                </div>
+                <div class="mt-2 d-flex align-items-baseline">
+                    <mat-icon svgIcon="clock_icon" class="m-2"></mat-icon>
+                    <p class="m-2">{{ sharedConstants.horario }}</p>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+    </div>
+</div>

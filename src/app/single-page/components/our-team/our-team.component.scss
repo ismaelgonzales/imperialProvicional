@@ -1,5 +1,15 @@
 @import "../../../shared/styles/generics.scss";
 
+h1{
+    font-size: 2.3rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+
+    span{
+        font-weight: 900;
+    }
+}
+
 img{
     width: 200px;
     height: 200px;
