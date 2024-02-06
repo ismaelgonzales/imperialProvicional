@@ -36,12 +36,28 @@ Con esos pasos se podrá debuggear en el Angular con Visual Studio Code.
     1. Cabecera y slider
 
     ![Cabecera y slider](./.img/header.png)
-
     Cabecera y slider mantenible con constantes
 
     2. Nuestros trabajos
 
     ![Nuestros trabajos](./.img/nuestros-trabajos.png)
+
+    3. Contactanos
+
+    ![Contactanos](./.img/contactanos.png)
+    formulario de contacto basico para la integracion con cualquier servicio emailing
+
+    4. Nuestro equipo
+
+    ![Equipo](./.img/equipo.png)
+    Carrusel del equipo de trabajo con posibilidad a extension de funcionalidad a medida
+
+    5. Ubicanos y footer
+
+    ![Encuentranos](./.img/encuentranos.png)
+    Seccion de encuentranos con integracion de google maps y/o leaflet
+
+
 
 
 2. Intranet 
