@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { TransformValueService } from '../../shared/helpers/transform-value.service';
 import * as constansShared from '../../shared/constants';
 import { Router } from '@angular/router';
 import { IParamsRegistro } from './interfaces';
-import {
-    minLengthContrasena,
-    minLengthTelefono,
-    maxLengthTelefono,
-} from '../../shared/constants/datos.constants';
+import { minLengthContrasena } from '../../shared/constants/datos.constants';
 import Swal from 'sweetalert2';
 import { CANCELAR_REGISTRO } from '../../shared/constants';
+import { PasswordsService } from '../../shared/helpers/passwords.service';
 
 @Component({
     selector: 'app-register',
@@ -18,39 +20,52 @@ import { CANCELAR_REGISTRO } from '../../shared/constants';
     styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-    public loginForm!: FormGroup;
+    public loginForm!: FormGroup<IParamsRegistro>;
     public constantsShared: typeof constansShared = constansShared;
 
     constructor(
         private fb: FormBuilder,
         private helperTransformValue: TransformValueService,
-        private _router: Router
+        private _router: Router,
+        private helperPassword: PasswordsService
     ) {
         this.initialForm();
     }
 
     private initialForm(): void {
         this.loginForm = this.fb.group({
-            nombre: ['', [Validators.required]],
-            apePaterno: ['', Validators.required],
-            apeMaterno: ['', Validators.required],
-            telefono: [
-                '',
-                [
-                    Validators.required,
-                    Validators.minLength(minLengthTelefono),
-                    Validators.maxLength(maxLengthTelefono),
-                ],
-            ],
             correo: ['', [Validators.required, Validators.email]],
             contrasena: [
                 '',
                 [
                     Validators.required,
                     Validators.minLength(minLengthContrasena),
+                    this.validContrasenaCharacterSpecial(),
                 ],
             ],
+            contrasenaRepeat: [
+                '',
+                [Validators.required, this.validContrasenaMatch()],
+            ],
         });
+    }
+
+    private validContrasenaCharacterSpecial() {
+        return (control: AbstractControl) => {
+            return this.helperPassword.passwordSecurity(control.value);
+        };
+    }
+
+    private validContrasenaMatch() {
+        return (control: AbstractControl) => {
+            const password = this.loginForm?.controls['contrasena']?.value;
+            const passwordRepeat = control.value;
+
+            return this.helperPassword.passwordMatching(
+                password,
+                passwordRepeat
+            );
+        };
     }
 
     public onlyNumber(event: KeyboardEvent): boolean {
@@ -68,8 +83,6 @@ export class RegisterComponent {
     }
 
     public registrar(): void {
-        const params: IParamsRegistro = {
-            ...this.loginForm.value,
-        };
+        const params = this.loginForm.value;
     }
 }

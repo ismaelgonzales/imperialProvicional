@@ -5,40 +5,6 @@
                 <h1 class="title text-center">Registrate</h1>
                 <form class="row" [formGroup]="loginForm">
                     <mat-form-field>
-                        <mat-label>Nombres</mat-label>
-                        <input
-                            (keypress)="onlyLetter($event)"
-                            matInput
-                            type="name"
-                            formControlName="nombre" />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Apellido Paterno</mat-label>
-                        <input
-                            (keypress)="onlyLetter($event)"
-                            matInput
-                            type="text"
-                            formControlName="apePaterno" />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Apellido Materno</mat-label>
-                        <input
-                            (keypress)="onlyLetter($event)"
-                            matInput
-                            type="text"
-                            formControlName="apeMaterno" />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Telefono</mat-label>
-                        <input
-                            (keypress)="onlyNumber($event)"
-                            matInput
-                            type="phone"
-                            [minlength]="constantsShared.minLengthTelefono"
-                            [maxlength]="constantsShared.maxLengthTelefono"
-                            formControlName="telefono" />
-                    </mat-form-field>
-                    <mat-form-field>
                         <mat-label>Correo electronico</mat-label>
                         <input matInput type="email" formControlName="correo" />
                         <mat-error class="mb-2">{{
@@ -58,6 +24,18 @@
                             {{ constantsShared.minLengthContrasena }}
                             caracteres</mat-error
                         >
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Repetir contrasena</mat-label>
+                        <input
+                            matInput
+                            type="password"
+                            formControlName="contrasenaRepeat" />
+                        <mat-error class="mb-2">
+                            {{
+                                constantsShared.MSG_ERROR_CONTRASENA_REPETIDA_NO_COINCIDE
+                            }}
+                        </mat-error>
                     </mat-form-field>
                 </form>
                 <div class="mt-4 d-sm-flex justify-content-center">

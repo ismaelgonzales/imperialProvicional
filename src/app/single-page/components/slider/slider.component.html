@@ -1,14 +1,18 @@
 <swiper-container navigation="true" loop="true">
-    <swiper-slide *ngFor="let slide of slides">
-        <div class="slider-content">
-            <img [src]="slide.src" />
-            <div class="title-slider">{{ slide.title }}</div>
-            @if (slide.subtitle) {
-                <div class="subtitle-slider">{{ slide.subtitleText }}</div>
-            }
-            @if (slide.button) {
-                <button (click)="nav(slide.id)">{{ slide.buttonText }}</button>
-            }
-        </div>
-    </swiper-slide>
+    @for (slide of slides; track slide.id) {
+        <swiper-slide>
+            <div class="slider-content">
+                <img [src]="slide.src" />
+                <div class="title-slider">{{ slide.title }}</div>
+                @if (slide.subtitle) {
+                    <div class="subtitle-slider">{{ slide.subtitleText }}</div>
+                }
+                @if (slide.button) {
+                    <button (click)="nav(slide.id)">
+                        {{ slide.buttonText }}
+                    </button>
+                }
+            </div>
+        </swiper-slide>
+    }
 </swiper-container>

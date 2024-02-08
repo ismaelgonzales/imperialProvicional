@@ -1,8 +1,7 @@
+import { FormControl } from '@angular/forms';
+
 export interface IParamsRegistro {
-    nombre: string;
-    apePaterno: string;
-    apeMaterno: string;
-    telefono: number;
-    correo: string;
-    contrasena: string;
+    correo: FormControl<string | null>;
+    contrasena: FormControl<string | null>;
+    contrasenaRepeat: FormControl<string | null>;
 }
