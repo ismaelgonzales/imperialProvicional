@@ -37,6 +37,11 @@ import { SuccessCaseComponent } from './single-page/components/success-case/succ
 import { ContactMeComponent } from './single-page/components/contact-me/contact-me.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { FindmeComponent } from './single-page/components/findme/findme.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { AuthInterceptorProviders } from './auth/interceptors/auth.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 register();
 
@@ -44,9 +49,9 @@ register();
     declarations: [
         AppComponent,
         SidebarComponent,
+        RegisterComponent,
         DashboardComponent,
         ContentComponent,
-        RegisterComponent,
         LoginComponent,
         SingleComponent,
         HeaderComponent,
@@ -57,6 +62,7 @@ register();
         SuccessCaseComponent,
         ContactMeComponent,
         FindmeComponent,
+        SpinnerComponent,
     ],
     imports: [
         BrowserModule,
@@ -76,8 +82,12 @@ register();
         FormsModule,
         MatIconModule,
         HttpClientModule,
+        NgxSpinnerModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
     ],
     providers: [
+        AuthInterceptorProviders,
         provideAnimationsAsync(),
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,

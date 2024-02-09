@@ -19,4 +19,5 @@ export const TXT_CANCELAR = 'Cancelar';
 
 //ALERTAS
 export const TITLE_CONFIRMACION = `Confirmacion`;
+export const TITLE_ERROR = 'Error';
 export const MSG_PERDER_DATOS_CANCELAR = `Si cancela el registro, se perderan los datos ingresados`;

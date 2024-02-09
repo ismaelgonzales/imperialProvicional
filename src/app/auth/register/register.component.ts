@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
     AbstractControl,
     FormBuilder,
@@ -11,31 +11,37 @@ import { Router } from '@angular/router';
 import { IParamsRegistro } from './interfaces';
 import { minLengthContrasena } from '../../shared/constants/datos.constants';
 import Swal from 'sweetalert2';
-import { CANCELAR_REGISTRO } from '../../shared/constants';
+import { CANCELAR_REGISTRO, TITLE_ERROR } from '../../shared/constants';
 import { PasswordsService } from '../../shared/helpers/passwords.service';
+import { RegisterService } from './services/register.service';
+import { ToastrService } from 'ngx-toastr';
+import { SubSink } from 'subsink';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
-    public loginForm!: FormGroup<IParamsRegistro>;
+export class RegisterComponent implements OnDestroy {
+    private subs = new SubSink();
+    public loginForm!: FormGroup;
     public constantsShared: typeof constansShared = constansShared;
 
     constructor(
         private fb: FormBuilder,
         private helperTransformValue: TransformValueService,
         private _router: Router,
-        private helperPassword: PasswordsService
+        private helperPassword: PasswordsService,
+        private registerService: RegisterService,
+        private toastr: ToastrService
     ) {
         this.initialForm();
     }
 
     private initialForm(): void {
         this.loginForm = this.fb.group({
-            correo: ['', [Validators.required, Validators.email]],
-            contrasena: [
+            email: ['', [Validators.required, Validators.email]],
+            password: [
                 '',
                 [
                     Validators.required,
@@ -43,7 +49,7 @@ export class RegisterComponent {
                     this.validContrasenaCharacterSpecial(),
                 ],
             ],
-            contrasenaRepeat: [
+            passwordRepeat: [
                 '',
                 [Validators.required, this.validContrasenaMatch()],
             ],
@@ -58,7 +64,7 @@ export class RegisterComponent {
 
     private validContrasenaMatch() {
         return (control: AbstractControl) => {
-            const password = this.loginForm?.controls['contrasena']?.value;
+            const password = this.loginForm?.controls['password']?.value;
             const passwordRepeat = control.value;
 
             return this.helperPassword.passwordMatching(
@@ -83,6 +89,22 @@ export class RegisterComponent {
     }
 
     public registrar(): void {
-        const params = this.loginForm.value;
+        const { email, password }: IParamsRegistro = this.loginForm.value;
+
+        this.subs.sink = this.registerService
+            .register({ email, password })
+            .subscribe(
+                (response: any) => {
+                    this.toastr.success(response.message);
+                    this._router.navigate(['/login']);
+                },
+                error => {
+                    this.toastr.error(error.error.message, TITLE_ERROR);
+                }
+            );
+    }
+
+    ngOnDestroy(): void {
+        this.subs.unsubscribe();
     }
 }

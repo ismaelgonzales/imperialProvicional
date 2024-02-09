@@ -6,7 +6,7 @@
                 <form class="row" [formGroup]="loginForm">
                     <mat-form-field>
                         <mat-label>Correo electronico</mat-label>
-                        <input matInput type="email" formControlName="correo" />
+                        <input matInput type="email" formControlName="email" />
                         <mat-error class="mb-2">{{
                             constantsShared.MSG_ERROR_EMAIL
                         }}</mat-error>
@@ -16,7 +16,7 @@
                         <input
                             matInput
                             type="password"
-                            formControlName="contrasena" />
+                            formControlName="password" />
                         <mat-error class="mb-2"
                             >{{
                                 constantsShared.MSG_ERROR_MIN_LENGTH_CONTRASENA
@@ -30,7 +30,7 @@
                         <input
                             matInput
                             type="password"
-                            formControlName="contrasenaRepeat" />
+                            formControlName="passwordRepeat" />
                         <mat-error class="mb-2">
                             {{
                                 constantsShared.MSG_ERROR_CONTRASENA_REPETIDA_NO_COINCIDE
