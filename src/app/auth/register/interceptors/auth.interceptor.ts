@@ -7,11 +7,11 @@ import {
     HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environments.dev';
+import { environment } from '../../../../environments/environments.dev';
 import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class RegisterInterceptor implements HttpInterceptor {
     private readonly url: string = `${environment.envVar.BACKEND_URL}`;
     private request: any;
 
@@ -21,7 +21,6 @@ export class AuthInterceptor implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
-        console.log('Interceptor');
         const url = `${this.url}/${req.url}`;
 
         console.log(url);
@@ -41,10 +40,10 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 }
 
-export const AuthInterceptorProviders = [
+export const RegisterInterceptorProviders = [
     {
         provide: HTTP_INTERCEPTORS,
-        useClass: AuthInterceptor,
+        useClass: RegisterInterceptor,
         multi: true,
     },
 ];

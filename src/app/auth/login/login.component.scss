@@ -1,0 +1,12 @@
+.wrapper__principal{
+    background-image: url('../../../assets/img/background-register.webp');
+    min-height: 100vh;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+}
+
+mat-spinner{
+    font-size: 1px;
+}

@@ -21,7 +21,6 @@ import {
     MAT_FORM_FIELD_DEFAULT_OPTIONS,
     MatFormFieldModule,
 } from '@angular/material/form-field';
-import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { SingleComponent } from './shared/components/layout/single/single.component';
@@ -35,13 +34,13 @@ import { ServicesConComponent } from './single-page/components/services-con/serv
 import { OurTeamComponent } from './single-page/components/our-team/our-team.component';
 import { SuccessCaseComponent } from './single-page/components/success-case/success-case.component';
 import { ContactMeComponent } from './single-page/components/contact-me/contact-me.component';
-import { GoogleMapsModule } from '@angular/google-maps';
 import { FindmeComponent } from './single-page/components/findme/findme.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { AuthInterceptorProviders } from './auth/interceptors/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderContentComponent } from './shared/components/header-content/header-content.component';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 register();
 
@@ -49,10 +48,8 @@ register();
     declarations: [
         AppComponent,
         SidebarComponent,
-        RegisterComponent,
         DashboardComponent,
         ContentComponent,
-        LoginComponent,
         SingleComponent,
         HeaderComponent,
         FooterComponent,
@@ -63,6 +60,7 @@ register();
         ContactMeComponent,
         FindmeComponent,
         SpinnerComponent,
+        HeaderContentComponent,
     ],
     imports: [
         BrowserModule,
@@ -87,13 +85,14 @@ register();
         ToastrModule.forRoot(),
     ],
     providers: [
-        AuthInterceptorProviders,
         provideAnimationsAsync(),
         {
             provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
             useValue: { appearance: 'outline' },
         },
         IconService,
+        JwtHelperService,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,29 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContentComponent } from './shared/components/layout/content/content.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SingleComponent } from './shared/components/layout/single/single.component';
+import { routeContent } from './shared/routes/routes';
+import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
     {
         path: '',
-        component: SingleComponent,
+        loadChildren: () =>
+            import('./shared/components/layout/single/single.module').then(
+                m => m.SingleModule
+            ),
     },
     {
         path: 'intranet',
         component: ContentComponent,
+        children: routeContent,
+        canActivate: [authGuard],
     },
     {
         path: 'registrate',
-        component: RegisterComponent,
-        data: {
-            title: 'Registrate',
-        },
+        loadChildren: () =>
+            import('./auth/register/register.module').then(
+                m => m.RegisterModule
+            ),
     },
     {
         path: 'login',
-        component: LoginComponent,
+        loadChildren: () =>
+            import('./auth/login/login.module').then(m => m.LoginModule),
+        canActivate: [authGuard],
+    },
+    {
+        path: '**',
+        redirectTo: '',
     },
 ];
 

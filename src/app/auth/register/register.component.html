@@ -40,20 +40,34 @@
                 </form>
                 <div class="mt-4 d-sm-flex justify-content-center">
                     <button
-                        [disabled]="!loginForm.valid"
+                        [disabled]="!loginForm.valid || spinner"
                         (click)="registrar()"
                         mat-raised-button
                         color="primary"
                         class="w-100 mb-2 btn">
-                        Registrar
+                        @switch (spinner) {
+                            @case (true) {
+                                <div
+                                    class="d-flex justify-content-center align-items-center">
+                                    <mat-spinner [diameter]="25"></mat-spinner>
+                                    <span class="m-2">Registrando</span>
+                                </div>
+                            }
+                            @default {
+                                Registrar
+                            }
+                        }
                     </button>
-                    <button
-                        mat-raised-button
-                        color="warn"
-                        class="w-100"
-                        (click)="cancelar()">
-                        Cancelar
-                    </button>
+
+                    @if (!spinner) {
+                        <button
+                            mat-raised-button
+                            color="warn"
+                            class="w-100"
+                            (click)="cancelar()">
+                            Cancelar
+                        </button>
+                    }
                 </div>
             </div>
         </div>

@@ -25,6 +25,7 @@ import { SubSink } from 'subsink';
 export class RegisterComponent implements OnDestroy {
     private subs = new SubSink();
     public loginForm!: FormGroup;
+    public spinner: boolean = false;
     public constantsShared: typeof constansShared = constansShared;
 
     constructor(
@@ -89,16 +90,19 @@ export class RegisterComponent implements OnDestroy {
     }
 
     public registrar(): void {
+        this.spinner = true;
         const { email, password }: IParamsRegistro = this.loginForm.value;
 
         this.subs.sink = this.registerService
             .register({ email, password })
             .subscribe(
                 (response: any) => {
+                    this.spinner = false;
                     this.toastr.success(response.message);
                     this._router.navigate(['/login']);
                 },
                 error => {
+                    this.spinner = false;
                     this.toastr.error(error.error.message, TITLE_ERROR);
                 }
             );
