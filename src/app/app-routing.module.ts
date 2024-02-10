@@ -24,6 +24,7 @@ const routes: Routes = [
             import('./auth/register/register.module').then(
                 m => m.RegisterModule
             ),
+        canActivate: [authGuard],
     },
     {
         path: 'login',

@@ -16,7 +16,10 @@ export const authGuard: CanActivateFn = (route, state) => {
         return false;
     }
 
-    if (state.url === '/login' && authService.loggeIn()) {
+    if (
+        (state.url === '/login' || state.url === '/registrate') &&
+        authService.loggeIn()
+    ) {
         _router.navigate(['/intranet']);
         return true;
     }
