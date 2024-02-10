@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 import { IParamsRegistro } from './interfaces';
 import { minLengthContrasena } from '../../shared/constants/datos.constants';
 import Swal from 'sweetalert2';
-import { CANCELAR_REGISTRO, TITLE_ERROR } from '../../shared/constants';
+import {
+    CANCELAR_REGISTRO,
+    MSG_TODOS_CAMPOS_REQUERIDOS,
+    TITLE_ERROR,
+} from '../../shared/constants';
 import { PasswordsService } from '../../shared/helpers/passwords.service';
 import { RegisterService } from './services/register.service';
 import { ToastrService } from 'ngx-toastr';
@@ -90,6 +94,11 @@ export class RegisterComponent implements OnDestroy {
     }
 
     public registrar(): void {
+        if (!this.loginForm.valid) {
+            this.toastr.error(MSG_TODOS_CAMPOS_REQUERIDOS, TITLE_ERROR);
+            return;
+        }
+
         this.spinner = true;
         const { email, password }: IParamsRegistro = this.loginForm.value;
 

@@ -3,7 +3,10 @@
         <div class="card">
             <div class="card-body">
                 <h1 class="title text-center">Ingresa</h1>
-                <form class="row" [formGroup]="loginForm">
+                <form
+                    class="row"
+                    [formGroup]="loginForm"
+                    (keyup.enter)="login()">
                     <mat-form-field>
                         <mat-label>Correo electronico</mat-label>
                         <input matInput type="email" formControlName="email" />

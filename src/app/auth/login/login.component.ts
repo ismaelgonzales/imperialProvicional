@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { minLengthContrasena } from '../../shared/constants';
+import {
+    MSG_TODOS_CAMPOS_REQUERIDOS,
+    TITLE_ERROR,
+    minLengthContrasena,
+} from '../../shared/constants';
 import * as constantsShared from '../../shared/constants';
 import { ILoginParams } from './interfaces/login.interface';
 import { SubSink } from 'subsink';
@@ -28,8 +32,6 @@ export class LoginComponent {
         this.initialForm();
     }
 
-    private isLogin(): void {}
-
     private initialForm(): void {
         this.loginForm = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -44,6 +46,11 @@ export class LoginComponent {
     }
 
     public login(): void {
+        if (!this.loginForm.valid) {
+            this.toastr.error(MSG_TODOS_CAMPOS_REQUERIDOS, TITLE_ERROR);
+            return;
+        }
+
         this.spinner = true;
         const loginParams: ILoginParams = this.loginForm.value;
 

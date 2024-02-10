@@ -2,6 +2,7 @@ export const MSG_ERROR_EMAIL = `*El formato del correo debe ser ejemplo@ejemplo.
 export const MSG_ERROR_MIN_LENGTH_CONTRASENA = `*La contrasena debe contener un caracter especial y tener minimo`;
 export const MSG_ERROR_CONTRASENA_REPETIDA_NO_COINCIDE =
     'Las contrasenas ingresadas no coinciden';
+export const MSG_TODOS_CAMPOS_REQUERIDOS = 'Todos los campos son requeridos';
 
 //ICONOS SWEET ALERT
 export const ICON_PREGUNTA = `question`;
