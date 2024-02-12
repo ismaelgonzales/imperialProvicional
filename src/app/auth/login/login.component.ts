@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
     MSG_TODOS_CAMPOS_REQUERIDOS,
@@ -17,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
     templateUrl: './login.component.html',
     styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
     private subs = new SubSink();
     public loginForm!: FormGroup;
     public constantsShared: typeof constantsShared = constantsShared;
@@ -56,7 +56,6 @@ export class LoginComponent {
 
         this.subs.sink = this.loginService.login(loginParams).subscribe(
             (response: any) => {
-                console.log(response);
                 this.toastr.success(response.message);
                 this.spinner = false;
                 this._router.navigate(['/intranet']);
@@ -69,5 +68,9 @@ export class LoginComponent {
                 );
             }
         );
+    }
+
+    ngOnDestroy(): void {
+        this.subs.unsubscribe();
     }
 }

@@ -26,7 +26,7 @@ export class AuthenticationService {
             return false;
         }
 
-        return decodedToken.email;
+        return true;
     }
 
     public loggeIn(): boolean {
