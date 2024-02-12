@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-findme',
-  templateUrl: './findme.component.html',
-  styleUrl: './findme.component.scss'
+    selector: 'app-findme',
+    templateUrl: './findme.component.html',
+    styleUrl: './findme.component.scss',
 })
-export class FindmeComponent {
-
-}
+export class FindmeComponent {}
