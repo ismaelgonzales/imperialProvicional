@@ -23,8 +23,6 @@ export class RegisterInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         const url = `${this.url}/${req.url}`;
 
-        console.log(url);
-
         this.request = req.clone({
             url,
             setHeaders: {
