@@ -1,29 +1,51 @@
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h1 class="title text-center">Ingresa</h1>
-            <form class="row" [formGroup]="loginForm">
-                <mat-form-field>
-                    <mat-label>correo</mat-label>
-                    <input matInput type="email" formControlName="email" />
-                    <mat-error>correo invalido </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Contrasena</mat-label>
-                    <input
-                        matInput
-                        type="password"
-                        formControlName="contrasena" />
-                </mat-form-field>
-            </form>
-            <div class="mt-4 d-sm-flex justify-center">
-                <button
-                    mat-raised-button
-                    [disabled]="!loginForm.valid"
-                    color="primary"
-                    class="w-100">
-                    Ingresar
-                </button>
+<div class="wrapper__principal">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="title text-center">Ingresa</h1>
+                <form
+                    class="row"
+                    [formGroup]="loginForm"
+                    (keyup.enter)="login()">
+                    <mat-form-field>
+                        <mat-label>Correo electronico</mat-label>
+                        <input matInput type="email" formControlName="email" />
+                        <mat-error>{{
+                            constantsShared.MSG_ERROR_EMAIL
+                        }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Contrasena</mat-label>
+                        <input
+                            matInput
+                            type="password"
+                            formControlName="password" />
+                        <mat-error>{{
+                            constantsShared.MSG_ERROR_MIN_LENGTH_CONTRASENA
+                        }}</mat-error>
+                    </mat-form-field>
+                </form>
+                <div class="mt-4 d-sm-flex justify-center">
+                    <button
+                        (click)="login()"
+                        mat-raised-button
+                        [disabled]="!loginForm.valid || this.spinner"
+                        color="primary"
+                        class="w-100">
+                        @switch (spinner) {
+                            @case (true) {
+                                <div
+                                    class="d-flex justify-content-center align-items-center">
+                                    <mat-spinner [diameter]="25"></mat-spinner>
+                                    <span class="m-2">Ingresando</span>
+                                </div>
+                            }
+                            @default {
+                                Ingresar
+                            }
+                        }
+                    </button>
+                </div>
                 <button
                     mat-raised-button
                     color="warn"

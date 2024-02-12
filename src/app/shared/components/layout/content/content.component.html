@@ -1,10 +1,14 @@
 <div class="page-wrapper">
     <div class="page-body-wrapper">
+        <app-header-content></app-header-content>
         <div class="sidebar-wrapper">
             <app-sidebar />
         </div>
         <div class="page-body">
-            <main>
+            <main
+                [style]="
+                    (isSidebarVisible$ | async) ? 'margin-left : 200px' : ''
+                ">
                 <router-outlet #o="outlet" />
             </main>
         </div>

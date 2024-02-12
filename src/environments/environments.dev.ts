@@ -4,5 +4,6 @@ export const environment = {
 
     envVar: {
         FRONTEND_URL: 'http://localhost:4200',
+        BACKEND_URL: 'http://localhost:3000',
     },
 };

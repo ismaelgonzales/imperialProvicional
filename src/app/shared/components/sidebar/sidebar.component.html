@@ -1,31 +1,21 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
-        #drawer
         class="sidenav"
         fixedInViewport
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false">
+        [attr.role]="(isHandset$ | async) ? 'navigation' : 'dialog'"
+        [mode]="(isHandset$ | async) ? 'side' : 'over'"
+        [opened]="(isSidebarVisible$ | async) === true">
+        <a href="/" alt="Inicio" class="d-flex justify-content-center p-3">
+            <img
+                src="../../../../assets/img/singlePage/logo.png"
+                alt="Cuentas Claras" />
+        </a>
+
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item href="#">Link 1</a>
+            <a mat-list-item>Link 1</a>
             <a mat-list-item href="#">Link 2</a>
             <a mat-list-item href="#">Link 3</a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            @if (isHandset$ | async) {
-                <button
-                    type="button"
-                    aria-label="Toggle sidenav"
-                    mat-icon-button
-                    (click)="drawer.toggle()">
-                    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-                </button>
-            }
-            <span>frontContaMyPe</span>
-        </mat-toolbar>
-        <!-- Add Content Here -->
-    </mat-sidenav-content>
 </mat-sidenav-container>

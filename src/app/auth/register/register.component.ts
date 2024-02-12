@@ -1,56 +1,82 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import {
+    AbstractControl,
+    FormBuilder,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 import { TransformValueService } from '../../shared/helpers/transform-value.service';
 import * as constansShared from '../../shared/constants';
 import { Router } from '@angular/router';
 import { IParamsRegistro } from './interfaces';
-import {
-    minLengthContrasena,
-    minLengthTelefono,
-    maxLengthTelefono,
-} from '../../shared/constants/datos.constants';
+import { minLengthContrasena } from '../../shared/constants/datos.constants';
 import Swal from 'sweetalert2';
-import { CANCELAR_REGISTRO } from '../../shared/constants';
+import {
+    CANCELAR_REGISTRO,
+    MSG_TODOS_CAMPOS_REQUERIDOS,
+    TITLE_ERROR,
+} from '../../shared/constants';
+import { PasswordsService } from '../../shared/helpers/passwords.service';
+import { RegisterService } from './services/register.service';
+import { ToastrService } from 'ngx-toastr';
+import { SubSink } from 'subsink';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy {
+    private subs = new SubSink();
     public loginForm!: FormGroup;
+    public spinner: boolean = false;
     public constantsShared: typeof constansShared = constansShared;
 
     constructor(
         private fb: FormBuilder,
         private helperTransformValue: TransformValueService,
-        private _router: Router
+        private _router: Router,
+        private helperPassword: PasswordsService,
+        private registerService: RegisterService,
+        private toastr: ToastrService
     ) {
         this.initialForm();
     }
 
     private initialForm(): void {
         this.loginForm = this.fb.group({
-            nombre: ['', [Validators.required]],
-            apePaterno: ['', Validators.required],
-            apeMaterno: ['', Validators.required],
-            telefono: [
-                '',
-                [
-                    Validators.required,
-                    Validators.minLength(minLengthTelefono),
-                    Validators.maxLength(maxLengthTelefono),
-                ],
-            ],
-            correo: ['', [Validators.required, Validators.email]],
-            contrasena: [
+            email: ['', [Validators.required, Validators.email]],
+            password: [
                 '',
                 [
                     Validators.required,
                     Validators.minLength(minLengthContrasena),
+                    this.validContrasenaCharacterSpecial(),
                 ],
             ],
+            passwordRepeat: [
+                '',
+                [Validators.required, this.validContrasenaMatch()],
+            ],
         });
+    }
+
+    private validContrasenaCharacterSpecial() {
+        return (control: AbstractControl) => {
+            return this.helperPassword.passwordSecurity(control.value);
+        };
+    }
+
+    private validContrasenaMatch() {
+        return (control: AbstractControl) => {
+            const password = this.loginForm?.controls['password']?.value;
+            const passwordRepeat = control.value;
+
+            return this.helperPassword.passwordMatching(
+                password,
+                passwordRepeat
+            );
+        };
     }
 
     public onlyNumber(event: KeyboardEvent): boolean {
@@ -68,8 +94,30 @@ export class RegisterComponent {
     }
 
     public registrar(): void {
-        const params: IParamsRegistro = {
-            ...this.loginForm.value,
-        };
+        if (!this.loginForm.valid) {
+            this.toastr.error(MSG_TODOS_CAMPOS_REQUERIDOS, TITLE_ERROR);
+            return;
+        }
+
+        this.spinner = true;
+        const { email, password }: IParamsRegistro = this.loginForm.value;
+
+        this.subs.sink = this.registerService
+            .register({ email, password })
+            .subscribe(
+                (response: any) => {
+                    this.spinner = false;
+                    this.toastr.success(response.message);
+                    this._router.navigate(['/login']);
+                },
+                error => {
+                    this.spinner = false;
+                    this.toastr.error(error.error.message, TITLE_ERROR);
+                }
+            );
+    }
+
+    ngOnDestroy(): void {
+        this.subs.unsubscribe();
     }
 }
