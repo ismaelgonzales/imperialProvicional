@@ -37,7 +37,11 @@ export class ConfiguracionesComponent {
     public onRouteOption(id: number): void {
         switch (id) {
             case 1:
-                this.dlgref.open(MyProfileComponent);
+                this.dlgref.open(MyProfileComponent, {
+                    height: '90%',
+                    width: '40%',
+                    disableClose: true,
+                });
                 break;
         }
     }

@@ -12,6 +12,7 @@ import {
 } from '../../../../constants';
 import { TransformValueService } from '../../../../helpers/transform-value.service';
 import { MatSelectChange } from '@angular/material/select';
+import * as constantsShared from '../../../../../shared/constants';
 
 @Component({
     selector: 'app-natural-person-form',
@@ -25,6 +26,7 @@ export class NaturalPersonFormComponent {
     public spinnerDni: boolean = false;
     public spinnerRuc: boolean = false;
     public haveRuc: boolean = false;
+    public constantsShared: typeof constantsShared = constantsShared;
 
     constructor(
         private fb: FormBuilder,

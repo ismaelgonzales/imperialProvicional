@@ -92,6 +92,7 @@
                 <mat-form-field class="w-100">
                     <mat-label>Nro. RUC</mat-label>
                     <input
+                        [maxlength]="constantsShared.lengthRuc"
                         formControlName="nroRuc"
                         type="text"
                         matInput
