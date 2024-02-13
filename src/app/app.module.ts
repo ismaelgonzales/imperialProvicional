@@ -41,6 +41,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderContentComponent } from './shared/components/header-content/header-content.component';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { MyProfileComponent } from './shared/components/my-profile/my-profile.component';
+import { NaturalPersonFormComponent } from './shared/components/my-profile/elements/natural-person-form/natural-person-form.component';
+import { LegalEntityFormComponent } from './shared/components/my-profile/elements/legal-entity-form/legal-entity-form.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CdkDrag } from '@angular/cdk/drag-drop';
 
 register();
 
@@ -61,6 +67,9 @@ register();
         FindmeComponent,
         SpinnerComponent,
         HeaderContentComponent,
+        MyProfileComponent,
+        NaturalPersonFormComponent,
+        LegalEntityFormComponent,
     ],
     imports: [
         BrowserModule,
@@ -70,6 +79,7 @@ register();
         MatSidenavModule,
         MatIconModule,
         MatListModule,
+        MatSelectModule,
         MatGridListModule,
         MatCardModule,
         MatMenuModule,
@@ -83,6 +93,8 @@ register();
         NgxSpinnerModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(),
+        MatProgressSpinnerModule,
+        CdkDrag,
     ],
     providers: [
         provideAnimationsAsync(),

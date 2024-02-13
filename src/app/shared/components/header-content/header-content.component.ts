@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavService } from '../../services/nav.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MyProfileComponent } from '../my-profile/my-profile.component';
 
 @Component({
     selector: 'app-header-content',
@@ -10,7 +12,8 @@ import { Router } from '@angular/router';
 export class HeaderContentComponent {
     constructor(
         private navService: NavService,
-        private _router: Router
+        private _router: Router,
+        private dlgRef: MatDialog
     ) {}
     public valida = true;
 
@@ -26,5 +29,9 @@ export class HeaderContentComponent {
     public logOut(): void {
         localStorage.clear();
         this._router.navigate(['/']);
+    }
+
+    public onRouteConfig(): void {
+        this._router.navigate(['intranet/configuraciones']);
     }
 }

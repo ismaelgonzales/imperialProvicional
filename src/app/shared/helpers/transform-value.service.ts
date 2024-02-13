@@ -28,4 +28,14 @@ export class TransformValueService {
 
         return false;
     }
+
+    public blockBackspace(event: KeyboardEvent): boolean {
+        if (event.key.charCodeAt(0) === 66) return false;
+
+        return true;
+    }
+
+    public allKeys(): boolean {
+        return false;
+    }
 }
