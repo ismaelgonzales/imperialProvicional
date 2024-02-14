@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IconService } from '../../shared/services/icon.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MyProfileComponent } from '../../shared/components/my-profile/my-profile.component';
 import { SecurityConfigComponent } from '../../shared/components/security-config/security-config.component';
+import { DeleteAccountComponent } from '../../shared/components/delete-account/delete-account.component';
 
 @Component({
     selector: 'app-configuraciones',
@@ -39,16 +39,25 @@ export class ConfiguracionesComponent {
         switch (id) {
             case 1:
                 this.dlgref.open(MyProfileComponent, {
-                    height: '90%',
-                    width: '40%',
+                    maxHeight: '90vh',
+                    width: '70vh',
                     disableClose: true,
                 });
                 break;
             case 2:
                 this.dlgref.open(SecurityConfigComponent, {
-                    width: '40%',
+                    maxHeight: '90vh',
+                    width: '70vh',
                     disableClose: true,
                 });
+                break;
+            case 3:
+                this.dlgref.open(DeleteAccountComponent, {
+                    maxHeight: '90vh',
+                    width: '70vh',
+                    disableClose: true,
+                });
+                break;
         }
     }
 }

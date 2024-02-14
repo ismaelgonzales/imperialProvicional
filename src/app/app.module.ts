@@ -50,6 +50,9 @@ import { CdkDrag } from '@angular/cdk/drag-drop';
 import { SecurityConfigComponent } from './shared/components/security-config/security-config.component';
 import { ChangePasswordComponent } from './shared/components/security-config/elements/change-password/change-password.component';
 import { ChangeEmailComponent } from './shared/components/security-config/elements/change-email/change-email.component';
+import { DeleteAccountComponent } from './shared/components/delete-account/delete-account.component';
+import { DeleteComponent } from './shared/components/delete-account/elements/delete/delete.component';
+import { DesactivateComponent } from './shared/components/delete-account/elements/desactivate/desactivate.component';
 
 register();
 
@@ -76,6 +79,9 @@ register();
         SecurityConfigComponent,
         ChangePasswordComponent,
         ChangeEmailComponent,
+        DeleteAccountComponent,
+        DeleteComponent,
+        DesactivateComponent,
     ],
     imports: [
         BrowserModule,
