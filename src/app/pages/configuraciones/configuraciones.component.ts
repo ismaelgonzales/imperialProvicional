@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IconService } from '../../shared/services/icon.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MyProfileComponent } from '../../shared/components/my-profile/my-profile.component';
+import { SecurityConfigComponent } from '../../shared/components/security-config/security-config.component';
 
 @Component({
     selector: 'app-configuraciones',
@@ -43,6 +44,11 @@ export class ConfiguracionesComponent {
                     disableClose: true,
                 });
                 break;
+            case 2:
+                this.dlgref.open(SecurityConfigComponent, {
+                    width: '40%',
+                    disableClose: true,
+                });
         }
     }
 }

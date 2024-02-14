@@ -47,6 +47,9 @@ import { LegalEntityFormComponent } from './shared/components/my-profile/element
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CdkDrag } from '@angular/cdk/drag-drop';
+import { SecurityConfigComponent } from './shared/components/security-config/security-config.component';
+import { ChangePasswordComponent } from './shared/components/security-config/elements/change-password/change-password.component';
+import { ChangeEmailComponent } from './shared/components/security-config/elements/change-email/change-email.component';
 
 register();
 
@@ -70,6 +73,9 @@ register();
         MyProfileComponent,
         NaturalPersonFormComponent,
         LegalEntityFormComponent,
+        SecurityConfigComponent,
+        ChangePasswordComponent,
+        ChangeEmailComponent,
     ],
     imports: [
         BrowserModule,

@@ -37,7 +37,7 @@ export class NaturalPersonFormComponent {
         this.iniciarFormulario();
     }
 
-    public iniciarFormulario(): void {
+    private iniciarFormulario(): void {
         this.myProfileForm = this.fb.group({
             typeDocument: ['', [Validators.required]],
             nroDocument: [
@@ -160,6 +160,7 @@ export class NaturalPersonFormComponent {
                 this.spinnerRuc = false;
             },
             error => {
+                this.spinnerRuc = false;
                 throw error;
             }
         );

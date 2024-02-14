@@ -1,0 +1,25 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <div
+            class="titulo d-flex justify-content-between align-items-center"
+            (click)="toggleForm()">
+            <h2 class="m-0">Reestablece tu correo electronico</h2>
+            <mat-icon>{{ iconKeyboardArrow }}</mat-icon>
+        </div>
+        <form action="" [@formAnimation]="formVisible ? 'visible' : 'hidden'">
+            @if (formVisible) {
+                <mat-form-field class="w-100">
+                    <mat-label>Nuevo Correo Electronico</mat-label>
+                    <input type="email" matInput />
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <mat-label>Repetir Correo Electronico</mat-label>
+                    <input type="email " matInput />
+                </mat-form-field>
+                <button class="w-100" mat-raised-button color="primary">
+                    Reestablecer Correo Electronico
+                </button>
+            }
+        </form>
+    </div>
+</div>

@@ -70,6 +70,10 @@ export class LoginComponent implements OnDestroy {
         );
     }
 
+    onRouteRegister(): void {
+        this._router.navigate(['/registrate']);
+    }
+
     ngOnDestroy(): void {
         this.subs.unsubscribe();
     }

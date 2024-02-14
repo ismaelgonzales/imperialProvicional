@@ -5,8 +5,10 @@ export const MSG_ERROR_CONTRASENA_REPETIDA_NO_COINCIDE =
 export const MSG_TODOS_CAMPOS_REQUERIDOS = 'Todos los campos son requeridos';
 export const MSG_CAMPO_REQUERIDO = 'No se ingreso el valor necesario';
 export const MSG_NO_FOUND_DNI = 'No se encontro el numero de DNI';
-export const MSG_RUC_INVALID = 'El numero de RUC no se encuentra activo';
+export const MSG_RUC_INVALID =
+    'El numero de RUC no se encuentra activo o no existe';
 export const MSG_INFO_SEARCH_DNI = 'Ingrese su DNI y dele clic a "Buscar DNI"';
+export const MSG_NO_APLICA = 'NO APLICA';
 
 //ICONOS SWEET ALERT
 export const ICON_PREGUNTA = `question`;

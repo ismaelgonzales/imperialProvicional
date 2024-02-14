@@ -1,1 +1,72 @@
-<p>legal-entity-form works!</p>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="myProfileForm">
+            <mat-form-field class="w-100">
+                <mat-label>Nro. Ruc</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    formControlName="nroRuc"
+                    [maxlength]="this.sharedConstants.lengthRuc"
+                    (keypress)="this.transformValueHelper.onlyNumber($event)" />
+                <button
+                    (click)="consultarRuc()"
+                    class="button-search"
+                    type="button"
+                    ngbTooltip="Buscar RUC"
+                    matSuffix
+                    [disabled]="spinnerRuc"
+                    mat-raised-button
+                    color="primary">
+                    @switch (spinnerRuc) {
+                        @case (true) {
+                            <mat-spinner [diameter]="25"></mat-spinner>
+                        }
+                        @default {
+                            <mat-icon>search</mat-icon>
+                        }
+                    }
+                </button>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Razon Social</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="razonSocial"
+                    (keypress)="this.transformValueHelper.allKeys()" />
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Nombre Comercial</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="nombreComercial"
+                    (keypress)="this.transformValueHelper.allKeys()" />
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Direccion Fiscal</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="direccionFiscal"
+                    (keypress)="this.transformValueHelper.allKeys()" />
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Departamento / Provincia / Distrito</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="ubicacion"
+                    (keypress)="this.transformValueHelper.allKeys()" />
+            </mat-form-field>
+        </form>
+        <button
+            class="w-100"
+            mat-raised-button
+            color="primary"
+            [disabled]="!myProfileForm.valid">
+            Guardar Cambios
+        </button>
+    </div>
+</div>
