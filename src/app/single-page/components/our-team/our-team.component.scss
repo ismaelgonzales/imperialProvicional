@@ -14,7 +14,7 @@ img{
     width: 200px;
     height: 200px;
     border: 0px;
-    border-radius: 50%;
+    
     object-fit: cover;
     margin-bottom: 10px;
 }
@@ -30,9 +30,9 @@ mat-divider{
  
     
     &:hover{
-        border : 1px solid $borderPrimaro;
-        border-top: 5px solid $colorPrimario;
-        border-bottom: 5px solid $colorPrimario;
+        border : 1px solid #BF303C;
+        border-top: 5px solid #F22E3E;
+        border-bottom: 5px solid #BF303C;
 
         div{
             animation : slidein 0.5s forwards

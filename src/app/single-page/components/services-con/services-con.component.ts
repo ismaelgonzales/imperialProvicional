@@ -11,20 +11,20 @@ export class ServicesConComponent {
         {
             id: 1,
             icon: 'clock_icon',
-            title: 'Asesoria',
-            text: 'Los servicios de auditoría están diseñados para ayudar a su empresa a mitigar riesgos, crear nuevas eficiencias y apoyar mejor los objetivos estratégicos.',
+            title: 'Llegadas Puntuales',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         },
         {
             id: 2,
             icon: 'mobile_icon',
-            title: 'Registro Contable',
-            text: 'Los servicios de auditoría están diseñados para ayudar a su empresa a mitigar riesgos, crear nuevas eficiencias y apoyar mejor los objetivos estratégicos.',
+            title: 'Wifi 5G',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         },
         {
             id: 3,
             icon: 'pin_icon',
-            title: 'Registro SUNAT',
-            text: 'Los servicios de auditoría están diseñados para ayudar a su empresa a mitigar riesgos, crear nuevas eficiencias y apoyar mejor los objetivos estratégicos.',
+            title: 'Destinos',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         },
     ];
 }

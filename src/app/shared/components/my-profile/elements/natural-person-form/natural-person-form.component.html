@@ -1,0 +1,139 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="myProfileForm">
+            <mat-form-field class="w-100">
+                <mat-label>Tipo de documento</mat-label>
+                <mat-select
+                    formControlName="typeDocument"
+                    (selectionChange)="selectTypeDocument($event)">
+                    <mat-option value="" disabled
+                        >-- Seleccione una opcion ---</mat-option
+                    >
+                    <mat-option value="1">DNI</mat-option>
+                    <mat-option value="2">Carnet de extranjeria</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="w-100 d-flex align-items-baseline">
+                <mat-form-field class="w-100">
+                    <mat-label>Numero documento</mat-label>
+                    <input
+                        matInput
+                        [maxlength]="lengthValueDoc"
+                        type="text"
+                        formControlName="nroDocument"
+                        (keypress)="
+                            this.transformValueHelper.onlyNumber($event)
+                        " />
+                    @if (selectedDocument) {
+                        <button
+                            ngbTooltip="Buscar DNI"
+                            type="button"
+                            class="button-search"
+                            (click)="consultarDni()"
+                            [disabled]="spinnerDni"
+                            mat-raised-button
+                            matSuffix
+                            color="primary">
+                            @switch (spinnerDni) {
+                                @case (true) {
+                                    <mat-spinner [diameter]="25"></mat-spinner>
+                                }
+                                @default {
+                                    <mat-icon>search</mat-icon>
+                                }
+                            }
+                        </button>
+                    }
+                </mat-form-field>
+            </div>
+            <mat-form-field class="w-100">
+                <mat-label>Nombre</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="names"
+                    (keydown)="bloquearTeclado()" />
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Apellido Paterno</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="apellidoPaterno"
+                    (keydown)="bloquearTeclado()" />
+            </mat-form-field>
+            <mat-form-field class="w-100">
+                <mat-label>Apellido Materno</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="apellidoMaterno"
+                    (keydown)="bloquearTeclado()" />
+            </mat-form-field>
+            <div class="d-flex justify-content-around mb-4">
+                <button
+                    class="mr-2"
+                    (click)="iHaveARuc()"
+                    mat-raised-button
+                    [color]="colorOptionIHaveRuc">
+                    <mat-icon>check_circle</mat-icon>
+                    Cuento con RUC
+                </button>
+                <button
+                    class="ml-2"
+                    (click)="iDontHaveARuc()"
+                    mat-raised-button
+                    [color]="colorOptionIDontHaveRuc">
+                    <mat-icon>cancel</mat-icon>
+                    No cuento con RUC
+                </button>
+            </div>
+            @if (haveRuc) {
+                <mat-form-field class="w-100">
+                    <mat-label>Nro. RUC</mat-label>
+                    <input
+                        [maxlength]="constantsShared.lengthRuc"
+                        formControlName="nroRuc"
+                        type="text"
+                        matInput
+                        (keypress)="
+                            this.transformValueHelper.onlyNumber($event)
+                        " />
+                    <button
+                        ngbTooltip="Buscar RUC"
+                        matSuffix
+                        type="button"
+                        (click)="consultarRuc()"
+                        [disabled]="spinnerRuc"
+                        class="button-search"
+                        mat-raised-button
+                        color="primary">
+                        @switch (spinnerRuc) {
+                            @case (true) {
+                                <mat-spinner [diameter]="25"></mat-spinner>
+                            }
+                            @default {
+                                <mat-icon>search</mat-icon>
+                            }
+                        }
+                    </button>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                    <mat-label>Razon Social</mat-label>
+                    <input
+                        type="text"
+                        matInput
+                        formControlName="razonSocial"
+                        (keydown)="bloquearTeclado()" />
+                </mat-form-field>
+            }
+        </form>
+        <button
+            class="w-100"
+            mat-raised-button
+            color="primary"
+            [disabled]="!myProfileForm.valid">
+            Guardar Cambios
+        </button>
+    </div>
+</div>

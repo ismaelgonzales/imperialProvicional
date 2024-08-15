@@ -1,0 +1,26 @@
+@import '../../../../../shared/styles/generics.scss';
+
+:host {
+    display: block;
+  }
+  
+  form {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    padding: 0rem .9rem 0rem .9rem;
+  }
+  
+  .form-visible {
+    opacity: 1;
+  }
+  
+  .titulo{
+    cursor: pointer;
+    padding: 10px;
+
+    &:hover{
+      background-color: $borderPrimaro;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }

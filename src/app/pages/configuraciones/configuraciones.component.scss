@@ -1,0 +1,28 @@
+@import '../../../app/shared/styles/generics.scss';
+
+h1{
+    font-weight: bold;
+}
+
+h3{
+    font-weight: bold;
+}
+
+.principal-icon{
+    scale : 3
+}
+
+.secondary-icon{
+    scale : 1.5
+}
+
+.option{
+    border : 1px solid $borderPrimaro;
+    border-radius: 10px;
+
+    &:hover{
+        background-color: $borderPrimaro;
+        cursor: pointer;
+    }
+    
+}

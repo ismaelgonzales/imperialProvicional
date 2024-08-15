@@ -79,14 +79,6 @@ export class RegisterComponent implements OnDestroy {
         };
     }
 
-    public onlyNumber(event: KeyboardEvent): boolean {
-        return this.helperTransformValue.onlyNumber(event);
-    }
-
-    public onlyLetter(event: KeyboardEvent): boolean {
-        return this.helperTransformValue.onlyLetter(event);
-    }
-
     public cancelar(): void {
         Swal.fire(CANCELAR_REGISTRO).then(result => {
             if (result.isConfirmed) this._router.navigate(['/']);

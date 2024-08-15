@@ -19,14 +19,14 @@
     }
 
     &__init{
-        background-color: $backgroundSecundario;
+        background-color: #F2A516;
         padding :2px;
         color : $colorBlanco
     }
 }
 
 .logo{
-    width: 100px;
+    width: 11rem;
 }
 
 .tel{
@@ -59,15 +59,15 @@ li{
 }
 
 .intranet{
-    background-color: $colorPrimario;
+    background-color: #F2A516;
     font-size: 1rem;
     font-weight: bold;
     color : $colorBlanco;
     padding: 10px;
-    border: 1px solid $colorPrimario;
+    border: 1px solid #F2CE16;
 
     &:hover{
-        background-color: $colorHoverPrimario;
+        background-color: #BF303C;
         color : $colorBlanco
     }
 }

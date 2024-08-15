@@ -1,4 +1,4 @@
-<h1 class="text-center"><span>Nuestro</span> Equipo</h1>
+<h1 class="text-center"><span>Nuestros</span> Servicios</h1>
 <swiper-container
     slides-per-view="3"
     class="container"
@@ -10,13 +10,14 @@
             <img [src]="member.img" [alt]="member.name" />
             <div class="member__name">{{ member.name }}</div>
             <div class="member__position">{{ member.position }}</div>
+            <div class="member__email">{{ member.email }}</div>
             <mat-divider></mat-divider>
-            <div>
+            <!-- <div>
                 @if (member.prefixPhone) {
                     {{ member.prefixPhoneNumber }}
                 }
                 {{ member.phoneNumber }}
-            </div>
+            </div> -->
         </swiper-slide>
     }
 </swiper-container>

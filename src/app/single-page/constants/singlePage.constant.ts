@@ -1,3 +1,3 @@
-export const direccion = 'Psj Los cardos 115 - Los Olivos';
-export const horario = 'Lun - Vier: 09:00am - 06:00pm';
-export const telefono = '+51 999999999';
+export const direccion = 'Calle Pisac 284 Int. 2 Urb, Ate 15012';
+export const horario = '17 Salidas diarias';
+export const telefono = '994195780';
